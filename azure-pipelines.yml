@@ -31,7 +31,7 @@ steps:
 
 # snyk code to html
 - script: |
-    snyk code test --sarif-file-output=results.sarif --report --project-name="Tesla-Web-Beta-Release" || true
+    snyk code test --sarif-file-output=results.sarif --report --project-name="Tesla-Web-Beta-Release-Code" || true
     ls -la results.sarif || true
     RESULT=$?
     snyk-to-html -o $(Build.ArtifactStagingDirectory)/results-code.html < results.sarif
@@ -50,17 +50,17 @@ steps:
 
   # snyk container to html
   # NOTE: Change the image name
-  #- script: |
-  #    snyk container test ucrew/tesla-web/general --file=Dockerfile --json-file-output=results.json
-  #    RESULT=$?
-  #    snyk-to-html -o $(Build.ArtifactStagingDirectory)/results-container.html < results.json
-  #    exit $RESULT
-  #  continueOnError: true
-  #  displayName: 'snyk container report html'
+- script: |
+    snyk container test ucrew/tesla-web:latest --file=Dockerfile --json-file-output=results.json
+    RESULT=$?
+    snyk-to-html -o $(Build.ArtifactStagingDirectory)/results-container.html < results.json
+    exit $RESULT
+  continueOnError: true
+  displayName: 'snyk container report html'
 
 # snyk open source to UI
 - script: |
-    snyk monitor --project-name=Tesla-Web-Beta-Release || true
+    snyk monitor --project-name=Tesla-Web-Beta-Release-OSS || true
     RESULT=$?
     exit $RESULT
   continueOnError: true
@@ -78,9 +78,9 @@ steps:
   inputs:
     reportDir: $(Build.ArtifactStagingDirectory)/results-open-source.html
     tabName: 'Snyk Open Source'
-#
-#  - task: PublishHtmlReport@1
-#    condition: succeededOrFailed()
-#    inputs:
-#      reportDir: $(Build.ArtifactStagingDirectory)/results-container.html
-#      tabName: 'Snyk Container'
+
+- task: PublishHtmlReport@1
+  condition: succeededOrFailed()
+  inputs:
+    reportDir: $(Build.ArtifactStagingDirectory)/results-container.html
+    tabName: 'Snyk Container'
