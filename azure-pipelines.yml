@@ -31,7 +31,6 @@ steps:
 
 # snyk code to html
 - script: |
-    cd ./routes || true
     snyk code test --sarif-file-output=results.sarif --report --project-name="Tesla-Web-Beta-Release" || true
     ls -la results.sarif || true
     RESULT=$?
