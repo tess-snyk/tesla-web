@@ -80,9 +80,9 @@ steps:
   inputs:
     reportDir: $(Build.ArtifactStagingDirectory)/results-open-source.html
     tabName: 'Snyk Open Source'
-
-  - task: PublishHtmlReport@1
-    condition: succeededOrFailed()
-    inputs:
-      reportDir: $(Build.ArtifactStagingDirectory)/results-container.html
-      tabName: 'Snyk Container'
+#
+#  - task: PublishHtmlReport@1
+#    condition: succeededOrFailed()
+#    inputs:
+#      reportDir: $(Build.ArtifactStagingDirectory)/results-container.html
+#      tabName: 'Snyk Container'
