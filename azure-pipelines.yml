@@ -31,7 +31,7 @@ steps:
 
 # snyk code to html
 - script: |
-    snyk code test --sarif-file-output=results.sarif --report --project-name="Tesla-Web-Beta-Release-Code" || true
+    snyk code test --org=f057a5e7-f8e3-4311-873f-59428c030551 --sarif-file-output=results.sarif --report --project-name="Tesla-Web-Beta-Release-Code" || true
     ls -la results.sarif || true
     RESULT=$?
     snyk-to-html -o $(Build.ArtifactStagingDirectory)/results-code.html < results.sarif
@@ -41,7 +41,7 @@ steps:
 
 # snyk open source to html
 - script: |
-    snyk test --json-file-output=results.json || true
+    snyk test --org=f057a5e7-f8e3-4311-873f-59428c030551 --json-file-output=results.json || true
     RESULT=$?
     snyk-to-html -o $(Build.ArtifactStagingDirectory)/results-open-source.html < results.json
     exit $RESULT
@@ -51,7 +51,7 @@ steps:
   # snyk container to html
   # NOTE: Change the image name
 - script: |
-    snyk container test ucrew/tesla-web:latest --file=Dockerfile --json-file-output=results.json
+    snyk container test --org=f057a5e7-f8e3-4311-873f-59428c030551 ucrew/tesla-web:latest --file=Dockerfile --json-file-output=results.json
     RESULT=$?
     snyk-to-html -o $(Build.ArtifactStagingDirectory)/results-container.html < results.json
     exit $RESULT
@@ -60,7 +60,7 @@ steps:
 
 # snyk open source to UI
 - script: |
-    snyk monitor --project-name=Tesla-Web-Beta-Release-OSS || true
+    snyk monitor --org=f057a5e7-f8e3-4311-873f-59428c030551 --project-name=Tesla-Web-Beta-Release-OSS || true
     RESULT=$?
     exit $RESULT
   continueOnError: true
