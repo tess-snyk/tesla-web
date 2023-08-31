@@ -24,7 +24,7 @@ steps:
 - script: |
     npm install -g snyk snyk-to-html
     mkdir html
-    snyk auth $(SNYK_TOKEN)
+    snyk auth $(SNYK_TOKEN_2)
     # explicitly allow scripts to continue if errors occur
     set +e
   displayName: 'snyk install & auth'
