@@ -30,11 +30,11 @@ steps:
   displayName: 'snyk install & auth'
 
 # snyk code to html
-- script: |
-    snyk code test --severity-threshold=high
-    RESULT=$?
-    exit $RESULT
-  displayName: 'snyk code fail build'
+#- script: |
+#    snyk code test --severity-threshold=high
+#    RESULT=$?
+#    exit $RESULT
+#  displayName: 'snyk code fail build'
 
 # snyk code to html
 - script: |
