@@ -1278,10 +1278,10 @@ fastq@^1.6.0:
   dependencies:
     reusify "^1.0.4"
 
-fauna@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/fauna/-/fauna-1.0.1.tgz#84eb98f7249b6902d008a8c829863e86974ab64e"
-  integrity sha512-0jAjqDHQ4Df9Gee4vhKehhccpOIyShuT25hHCU4lkIFrMsVXZ68pFxUDBqh8GcCPQznSt0dMsEpw6ZPlzKKtCA==
+fauna@^1.0.2:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/fauna/-/fauna-1.2.0.tgz#34936ace202d80d56581cdb33f487a1ba888bc82"
+  integrity sha512-YiNVB6uZwXOlVwVzwP3JNEVllPTU/U/in175tuPYZBtrk0ji4XRbxwFyk1CNJfJYFhzNaQV066U6KwhWtCpRdA==
 
 file-entry-cache@^6.0.1:
   version "6.0.1"
